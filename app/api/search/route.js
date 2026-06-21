@@ -58,7 +58,7 @@ export async function POST(req) {
     // Map all flights directly to ensure no options are truncated by the LLM
     const parsedData = flightsToProcess.map((f, index) => {
       // Determine duration
-      const durationMins = f.flights ? f.flights.reduce((acc, curr) => acc + (curr.duration || 0), 0) : f.total_duration;
+      const durationMins = f.total_duration || (f.flights ? f.flights.reduce((acc, curr) => acc + (curr.duration || 0), 0) : 0);
       const hours = Math.floor(durationMins / 60);
       const mins = durationMins % 60;
       const durationStr = `${hours} hr ${mins} min`;

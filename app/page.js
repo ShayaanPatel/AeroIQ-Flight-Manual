@@ -257,50 +257,52 @@ export default function Home() {
                 className="glass-panel flight-card"
                 onClick={() => setExpandedFlight(expandedFlight === idx ? null : idx)}
               >
-                 <div className="flight-info">
-                    {flight.airlineLogo ? (
-                      <img src={flight.airlineLogo} alt={flight.provider} className="airline-logo" style={{width: '32px', height: '32px', objectFit: 'contain', background: 'white', borderRadius: '4px', padding: '2px'}} />
-                    ) : (
-                      <div className="airline-logo" style={{width: '32px', height: '32px', background: 'rgba(255,255,255,0.1)', borderRadius: '4px'}}></div>
-                    )}
-                    <div>
-                       <div className="flight-time">{formatTime(flight.departureTime)} – {formatTime(flight.arrivalTime)}</div>
-                       <div style={{color: 'var(--text-secondary)', fontSize: '0.9rem'}}>{flight.provider}</div>
-                    </div>
-                 </div>
-                 
-                 <div className="flight-meta">
-                    <div style={{fontWeight: '500'}}>{flight.duration}</div>
-                    <div style={{color: 'var(--text-secondary)', fontSize: '0.9rem'}}>{origin} - {destination}</div>
-                 </div>
-                 
-                 <div className="flight-meta">
-                    <div style={{fontWeight: '500'}}>{flight.stops}</div>
-                 </div>
-                 
-                 <div>
-                    <div style={{color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '4px', textAlign: 'right'}}>{flight.provider || 'AeroIQ AI'}</div>
-                    <div className="flight-price">{flight.price || 'A N/A'}</div>
-                    <div style={{color: 'var(--text-secondary)', fontSize: '0.8rem', textAlign: 'right', marginBottom: '8px'}}>{flight.flightNumber}</div>
-                    
-                    {flight.bookingLink && flight.bookingLink !== '#' && (
-                       <a href={flight.bookingLink} onClick={(e) => e.stopPropagation()} target="_blank" rel="noopener noreferrer" style={{
-                         display: 'inline-block',
-                         background: 'rgba(255, 255, 255, 0.1)',
-                         color: 'var(--accent-color)',
-                         padding: '6px 12px',
-                         borderRadius: '6px',
-                         textDecoration: 'none',
-                         fontSize: '0.85rem',
-                         fontWeight: '600',
-                         border: '1px solid rgba(255,255,255,0.1)',
-                         transition: 'all 0.2s ease',
-                         textAlign: 'center',
-                         width: '100%'
-                       }}>
-                         Book Now
-                       </a>
-                    )}
+                 <div className="flight-card-main">
+                   <div className="flight-info">
+                      {flight.airlineLogo ? (
+                        <img src={flight.airlineLogo} alt={flight.provider} className="airline-logo" style={{width: '32px', height: '32px', objectFit: 'contain', background: 'white', borderRadius: '4px', padding: '2px'}} />
+                      ) : (
+                        <div className="airline-logo" style={{width: '32px', height: '32px', background: 'rgba(255,255,255,0.1)', borderRadius: '4px'}}></div>
+                      )}
+                      <div>
+                         <div className="flight-time">{formatTime(flight.departureTime)} – {formatTime(flight.arrivalTime)}</div>
+                         <div style={{color: 'var(--text-secondary)', fontSize: '0.9rem'}}>{flight.provider}</div>
+                      </div>
+                   </div>
+                   
+                   <div className="flight-meta">
+                      <div style={{fontWeight: '500'}}>{flight.duration}</div>
+                      <div style={{color: 'var(--text-secondary)', fontSize: '0.9rem'}}>{origin} - {destination}</div>
+                   </div>
+                   
+                   <div className="flight-meta">
+                      <div style={{fontWeight: '500'}}>{flight.stops}</div>
+                   </div>
+                   
+                   <div>
+                      <div style={{color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '4px', textAlign: 'right'}}>{flight.provider || 'AeroIQ AI'}</div>
+                      <div className="flight-price">{flight.price || 'A N/A'}</div>
+                      <div style={{color: 'var(--text-secondary)', fontSize: '0.8rem', textAlign: 'right', marginBottom: '8px'}}>{flight.flightNumber}</div>
+                      
+                      {flight.bookingLink && flight.bookingLink !== '#' && (
+                         <a href={flight.bookingLink} onClick={(e) => e.stopPropagation()} target="_blank" rel="noopener noreferrer" style={{
+                           display: 'inline-block',
+                           background: 'rgba(255, 255, 255, 0.1)',
+                           color: 'var(--accent-color)',
+                           padding: '6px 12px',
+                           borderRadius: '6px',
+                           textDecoration: 'none',
+                           fontSize: '0.85rem',
+                           fontWeight: '600',
+                           border: '1px solid rgba(255,255,255,0.1)',
+                           transition: 'all 0.2s ease',
+                           textAlign: 'center',
+                           width: '100%'
+                         }}>
+                           Book Now
+                         </a>
+                      )}
+                   </div>
                  </div>
                  
                  {expandedFlight === idx && flight.legs && flight.legs.length > 0 && (
